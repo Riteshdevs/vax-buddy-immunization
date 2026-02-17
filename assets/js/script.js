@@ -70,7 +70,7 @@ function saveMother(e) {
   };
 
   localStorage.setItem("mother", JSON.stringify(mother));
-  window.location.href = "child.html";
+  window.location.href = "child-info.html";
 }
 
 // ==========================
@@ -154,17 +154,17 @@ function loadDashboard() {
 
   let motherList = document.getElementById("motherList");
   if (!motherList) return;
-  
+
   motherList.innerHTML = "";
   Object.keys(mothers).forEach((key, mIdx) => {
     let mother = mothers[key].info;
-    
+
     // Create the Mother Card
     let motherCard = document.createElement('div');
     motherCard.className = 'card';
     motherCard.style.cursor = 'pointer';
     motherCard.onclick = () => showChildren(key);
-    
+
     motherCard.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
           <div>
@@ -175,7 +175,7 @@ function loadDashboard() {
       </div>
       <div id="childrenBox-${key}" class="children-box" style="display:none; border-top: 1px solid #eee; padding-top: 16px; margin-top: 16px;"></div>
     `;
-    
+
     motherList.appendChild(motherCard);
   });
 }
@@ -189,27 +189,27 @@ function showChildren(key) {
     if (!mothers[mkey]) mothers[mkey] = [];
     mothers[mkey].push({ ...child, childIndex: idx });
   });
-  
+
   let childrenArr = mothers[key] || [];
-  
+
   // Toggle visibility if already open
   let box = document.getElementById('childrenBox-' + key);
   if (!box) return;
-  
+
   if (box.style.display === 'block') {
-      box.style.display = 'none';
-      return;
+    box.style.display = 'none';
+    return;
   }
-  
+
   // Calculate status counts
   let totalUpcoming = 0, totalOverdue = 0, totalCompleted = 0;
   let today = new Date().toISOString().split("T")[0];
-  
+
   childrenArr.forEach(child => {
     child.vaccines.forEach(v => {
       // Auto status update based on date
       if (v.status === "upcoming" && v.dueDate < today) v.status = "overdue";
-      
+
       if (v.status === "upcoming") totalUpcoming++;
       if (v.status === "overdue") totalOverdue++;
       if (v.status === "completed") totalCompleted++;
@@ -223,27 +223,27 @@ function showChildren(key) {
       <span class="badge badge-completed">Completed: ${totalCompleted}</span>
     </div>
   `;
-  
+
   let html = statusHTML;
-  
+
   // Sort children by DOB ascending
   childrenArr.sort((a, b) => new Date(a.dob) - new Date(b.dob));
-  
+
   childrenArr.forEach((child, childIndex) => {
     let vaccineArrHTML = "";
-    
+
     child.vaccines.forEach((v, vIndex) => {
       let statusClass = "badge-upcoming";
       let statusText = "Upcoming";
-      
-      if(v.status === 'overdue') { statusClass = 'badge-overdue'; statusText = 'Overdue'; }
-      if(v.status === 'completed') { statusClass = 'badge-completed'; statusText = 'Completed'; }
+
+      if (v.status === 'overdue') { statusClass = 'badge-overdue'; statusText = 'Overdue'; }
+      if (v.status === 'completed') { statusClass = 'badge-completed'; statusText = 'Completed'; }
 
       let actionButton = "";
       if (v.status !== "completed") {
-          actionButton = `<button class="btn btn-sm btn-success" style="padding: 2px 8px; font-size: 0.8rem;" onclick="markCompleted(${child.childIndex}, ${vIndex}); event.stopPropagation();">Mark Done</button>`;
+        actionButton = `<button class="btn btn-sm btn-success" style="padding: 2px 8px; font-size: 0.8rem;" onclick="markCompleted(${child.childIndex}, ${vIndex}); event.stopPropagation();">Mark Done</button>`;
       } else if (v.completedAt) {
-          actionButton = `<small style="color: green;">Done: ${v.completedAt.split(',')[0]}</small>`;
+        actionButton = `<small style="color: green;">Done: ${v.completedAt.split(',')[0]}</small>`;
       }
 
       vaccineArrHTML += `
@@ -276,7 +276,7 @@ function showChildren(key) {
       </div>
     `;
   });
-  
+
   // Helper for ordinal label
   function ordinalLabel(idx) {
     if (idx === 0) return 'First Child';
@@ -285,12 +285,12 @@ function showChildren(key) {
     if (idx === 3) return 'Fourth Child';
     return (idx + 1) + 'th Child';
   }
-  
+
   // Hide all children boxes first (except this one if we were toggling separate logic)
   document.querySelectorAll('.children-box').forEach(b => {
-      if(b.id !== 'childrenBox-' + key) b.style.display = 'none';
+    if (b.id !== 'childrenBox-' + key) b.style.display = 'none';
   });
-  
+
   box.innerHTML = html;
   box.style.display = 'block';
 }
@@ -301,39 +301,39 @@ function markCompleted(childIndex, vaccineIndex) {
   children[childIndex].vaccines[vaccineIndex].status = "completed";
   children[childIndex].vaccines[vaccineIndex].completedAt = now.toLocaleString();
   localStorage.setItem("children", JSON.stringify(children));
-  
+
   // Reload the specific open box to keep state
   // Need to find which mother key this child belongs to reload properly
   // For simplicity, we just reload the dashboard, which closes the accordion.
   // Better UX: Find the mother key and re-call showChildren.
   let child = children[childIndex];
   let key = child.motherName + "|" + child.motherPhone + "|" + child.motherAdhaar;
-  
+
   loadDashboard();
   // Auto-reopen the mother card
   setTimeout(() => showChildren(key), 50);
 }
 
 function deleteChild(childIndex) {
-  if(!confirm("Are you sure you want to delete this child's record?")) return;
-  
+  if (!confirm("Are you sure you want to delete this child's record?")) return;
+
   let children = JSON.parse(localStorage.getItem("children")) || [];
   // We need to get the key before deleting to reopen
   let child = children[childIndex];
   let key = child.motherName + "|" + child.motherPhone + "|" + child.motherAdhaar;
-  
+
   children.splice(childIndex, 1);
   localStorage.setItem("children", JSON.stringify(children));
-  
+
   loadDashboard();
   // Check if mother still has children, if so reopen
-  let remaining = children.filter(c => 
-      c.motherName === child.motherName && 
-      c.motherPhone === child.motherPhone && 
-      c.motherAdhaar === child.motherAdhaar
+  let remaining = children.filter(c =>
+    c.motherName === child.motherName &&
+    c.motherPhone === child.motherPhone &&
+    c.motherAdhaar === child.motherAdhaar
   );
-  if(remaining.length > 0) {
-      setTimeout(() => showChildren(key), 50);
+  if (remaining.length > 0) {
+    setTimeout(() => showChildren(key), 50);
   }
 }
 
@@ -342,7 +342,7 @@ function deleteChild(childIndex) {
 // ==========================
 function logout() {
   localStorage.clear();
-  window.location.href = "index.html";
+  window.location.href = "mother-info.html";
 }
 
 // ==========================

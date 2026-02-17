@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vax Buddy - Immunisation Tracker</title>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
 	<style>
 		/* Page-specific overrides for landing page hero */
 		.hero-section {
@@ -131,10 +131,10 @@
 				🩺 Vax<span>Buddy</span>
 			</div>
 			<div class="nav-links">
-				<a href="front.html" class="active">Home</a>
+				<a href="mother-info.html" class="active">Home</a>
 				<a href="dashboard.html">Dashboard</a>
 				<a href="records.html">Records</a>
-				<a href="index.html" class="btn btn-secondary btn-sm" style="color: white;">Login / Start</a>
+				<a href="mother-info.html" class="btn btn-secondary btn-sm" style="color: white;">Login / Start</a>
 			</div>
 		</div>
 	</nav>
@@ -150,7 +150,7 @@
 						and easy-to-use tracking system. Secure, private, and designed for parents.
 					</p>
 					<div class="d-flex gap-4" style="margin-top: 2rem;">
-						<a href="index.html" class="btn btn-primary">Get Started Now</a>
+						<a href="mother-info.html" class="btn btn-primary">Get Started Now</a>
 						<button onclick="notify('whatsapp')" class="btn btn-outline">Test Reminders</button>
 					</div>
 
@@ -170,7 +170,7 @@
 							<div style="font-size: 4rem; margin-bottom: 20px;">👶</div>
 							<h3 style="color: var(--primary-color);">Vax Buddy</h3>
 							<p>Your personal assistant for tracking vaccinations.</p>
-							<a href="index.html" class="btn btn-secondary btn-sm"
+							<a href="mother-info.html" class="btn btn-secondary btn-sm"
 								style="margin-top: 20px; width: 80%;">Open App</a>
 						</div>
 					</div>
@@ -216,6 +216,7 @@
 		</div>
 	</footer>
 
+	<script src="assets/js/script.js"></script>
 	<script>
 		function notify(type) {
 			const msg = `Sending sample ${type} reminder... (Simulation)`;
