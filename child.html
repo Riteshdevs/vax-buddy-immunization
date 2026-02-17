@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vax Buddy - Child Info</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Custom radio buttons for gender */
+    .gender-options {
+      display: flex;
+      gap: 16px;
+    }
+
+    .gender-option {
+      flex: 1;
+      position: relative;
+    }
+
+    .gender-option input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .gender-label {
+      display: block;
+      padding: 16px;
+      border: 2px solid #ddd;
+      border-radius: var(--radius-md);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .gender-option input:checked+.gender-label {
+      border-color: var(--primary-color);
+      background-color: rgba(78, 84, 200, 0.05);
+      color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+    }
+
+    .gender-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="logo">
+        <a href="front.html" style="color: inherit; text-decoration: none;">🩺 Vax<span>Buddy</span></a>
+      </div>
+      <div class="nav-links">
+        <a href="front.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="records.html">Records</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container section">
+    <div class="max-w-600 mx-auto">
+      <div class="text-center mb-4">
+        <h1>Tell us about your child</h1>
+        <p>We need some basic information to create a personalized vaccination schedule.</p>
+      </div>
+
+      <div class="card">
+        <h2 class="text-center mb-4" style="font-size: 1.5rem;">👶 Child Information</h2>
+
+        <form onsubmit="saveChild(event)">
+          <div class="form-group">
+            <label for="childName" class="form-label">Child's Name</label>
+            <input type="text" id="childName" class="form-control" placeholder="Enter child's full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" id="dob" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Gender</label>
+            <div class="gender-options">
+              <div class="gender-option">
+                <input type="radio" name="gender" id="genderBoy" value="Boy" required>
+                <label for="genderBoy" class="gender-label">
+                  <span class="gender-icon">👦</span>
+                  Boy
+                </label>
+              </div>
+              <div class="gender-option">
+                <input type="radio" name="gender" id="genderGirl" value="Girl" required>
+                <label for="genderGirl" class="gender-label">
+                  <span class="gender-icon">👧</span>
+                  Girl
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <button type="submit" class="btn btn-primary w-100">Create Vaccination Schedule</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="d-flex gap-4 mt-4" style="flex-wrap: wrap;">
+        <div class="card" style="flex: 1; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
+          <div style="font-size: 2rem; color: var(--primary-color);">📝</div>
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 1.1rem;">Personalized Schedule</h4>
+            <p style="margin: 0; font-size: 0.9rem;">We’ll create a custom vaccination timeline based on your child's
+              birth date.</p>
+          </div>
+        </div>
+        <div class="card" style="flex: 1; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
+          <div style="font-size: 2rem; color: var(--secondary-color);">🔔</div>
+          <div>
+            <h4 style="margin: 0 0 8px 0; font-size: 1.1rem;">Smart Reminders</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Get timely vaccination notifications, so you never miss a dose.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

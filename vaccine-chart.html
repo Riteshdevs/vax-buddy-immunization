@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaccine Chart - VaxBuddy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .vaccine-chart-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid #eee;
+    }
+
+    table.vaccine-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    table.vaccine-table th,
+    table.vaccine-table td {
+      border-bottom: 1px solid #eee;
+      padding: 16px;
+      text-align: left;
+    }
+
+    table.vaccine-table th {
+      background: var(--background-color);
+      color: var(--primary-color);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    table.vaccine-table tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="logo">
+        <a href="front.html" style="color: inherit; text-decoration: none;">🩺 Vax<span>Buddy</span></a>
+      </div>
+      <div class="nav-links">
+        <a href="front.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="records.html" class="active">Records</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container section">
+    <div class="text-center mb-4">
+      <h1>Standard Immunization Schedule</h1>
+      <p>Reference chart for recommended vaccinations by age.</p>
+    </div>
+
+    <div class="vaccine-chart-wrapper">
+      <table class="vaccine-table">
+        <thead>
+          <tr>
+            <th>Vaccine Name</th>
+            <th>Recommended Age</th>
+            <th>Dose</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BCG</td>
+            <td>At birth</td>
+            <td>1</td>
+            <td>Prevents tuberculosis</td>
+          </tr>
+          <tr>
+            <td>Hepatitis B</td>
+            <td>At birth, 6 weeks, 6 months</td>
+            <td>3</td>
+            <td>Prevents hepatitis B</td>
+          </tr>
+          <tr>
+            <td>OPV (Oral Polio Vaccine)</td>
+            <td>At birth, 6, 10, 14 weeks</td>
+            <td>4</td>
+            <td>Polio prevention</td>
+          </tr>
+          <tr>
+            <td>IPV (Injectable Polio Vaccine)</td>
+            <td>14 weeks</td>
+            <td>1</td>
+            <td>Polio prevention</td>
+          </tr>
+          <tr>
+            <td>DPT</td>
+            <td>6, 10, 14 weeks</td>
+            <td>3</td>
+            <td>Diphtheria, pertussis, tetanus</td>
+          </tr>
+          <tr>
+            <td>Rotavirus</td>
+            <td>6, 10, 14 weeks</td>
+            <td>3</td>
+            <td>Prevents rotavirus diarrhea</td>
+          </tr>
+          <tr>
+            <td>Pneumococcal (PCV)</td>
+            <td>6, 14 weeks, 9-12 months</td>
+            <td>3</td>
+            <td>Pneumonia prevention</td>
+          </tr>
+          <tr>
+            <td>Measles</td>
+            <td>9 months, 16-24 months</td>
+            <td>2</td>
+            <td>Prevents measles</td>
+          </tr>
+          <tr>
+            <td>MMR</td>
+            <td>9 months, 16-24 months</td>
+            <td>2</td>
+            <td>Measles, mumps, rubella</td>
+          </tr>
+          <tr>
+            <td>Vitamin A</td>
+            <td>9 months, then every 6 months up to 5 years</td>
+            <td>9</td>
+            <td>Prevents vitamin A deficiency</td>
+          </tr>
+          <tr>
+            <td>Typhoid</td>
+            <td>2 years</td>
+            <td>1</td>
+            <td>Prevents typhoid fever</td>
+          </tr>
+          <tr>
+            <td>Hepatitis A</td>
+            <td>12 months, 18 months</td>
+            <td>2</td>
+            <td>Prevents hepatitis A</td>
+          </tr>
+          <tr>
+            <td>Chickenpox (Varicella)</td>
+            <td>12-15 months</td>
+            <td>1</td>
+            <td>Prevents chickenpox</td>
+          </tr>
+          <tr>
+            <td>Influenza</td>
+            <td>6 months, then yearly</td>
+            <td>Multiple</td>
+            <td>Flu prevention</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center mt-4">
+      <button onclick="window.history.back()" class="btn btn-secondary">Back to Dashboard</button>
+    </div>
+  </div>
+</body>
+
+</html>

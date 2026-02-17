@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>VaxBuddy - Mother Info</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Circular Logo above title -->
+    <div class="logo-circle">
+      <img src="logo.jpg" alt="VaxBuddy Logo">
+    </div>
+    <!-- Title -->
+    <h1>Welcome to <span class="brand">VaxBuddy</span></h1>
+    <p class="subtitle">Your child's immunization companion</p>
+    <p class="subtitle-small">Please enter mother's information to get started</p>
+    <!-- Card -->
+    <div class="card large-card">
+      <div class="mother-header"><span class="icon-person bg-icon">&#128100;</span> Mother Information</div>
+      <form onsubmit="saveMother(event)">
+  <label for="motherName"><span class="icon-person">&#128100;</span> <strong>Mother's Name</strong></label>
+  <input type="text" id="motherName" placeholder="Enter mother's full name" required style="margin-bottom:20px;">
+  <label for="phoneNumber"><span class="icon-phone">&#128222;</span> <strong>Phone Number</strong></label>
+  <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required style="margin-bottom:20px;">
+  <label for="adhaarNumber"><span class="icon-id">&#128179;</span> <strong>Adhaar Card Number</strong></label>
+  <input type="text" id="adhaarNumber" placeholder="Enter Adhaar Card Number" required pattern="\d{12}" maxlength="12" style="margin-bottom:20px;">
+  <small class="reminder-note">We’ll use this to send vaccination reminders.</small>
+  <div style="margin-top:64px;"><button type="submit" class="start-tracking-btn">Start Tracking Vaccinations</button></div>
+      </form>
+    </div>
+    <div class="features-boxes">
+      <!-- Existing boxes only -->
+      <div class="feature-box wide-feature">
+        <div class="feature-title blue-heading"><span class="feature-icon">👶</span> Track Multiple Children:</div>
+        <div>Manage vaccination schedules for all your children in one place</div>
+      </div>
+      <div class="feature-box wide-feature">
+        <div class="feature-title pink-heading"><span class="feature-icon">🔔</span> Timely Reminders:</div>
+        <div>Never miss a vaccination with our smart notification system</div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

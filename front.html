@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vax Buddy - Immunisation Tracker</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		/* Page-specific overrides for landing page hero */
+		.hero-section {
+			background: white;
+			min-height: 80vh;
+			display: flex;
+			align-items: center;
+			padding: var(--spacing-xxl) 0;
+		}
+
+		.hero-content {
+			display: flex;
+			align-items: center;
+			gap: var(--spacing-xl);
+			flex-wrap: wrap;
+		}
+
+		.hero-text {
+			flex: 1;
+			min-width: 300px;
+		}
+
+		.hero-image {
+			flex: 1;
+			min-width: 300px;
+			text-align: center;
+			position: relative;
+		}
+
+		.hero-image img {
+			max-width: 80%;
+			border-radius: var(--radius-xl);
+			box-shadow: var(--shadow-hover);
+			animation: float 6s ease-in-out infinite;
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(0px);
+			}
+
+			50% {
+				transform: translateY(-20px);
+			}
+
+			100% {
+				transform: translateY(0px);
+			}
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: var(--spacing-lg);
+			margin-top: var(--spacing-xl);
+		}
+
+		.feature-card {
+			background: white;
+			padding: var(--spacing-lg);
+			border-radius: var(--radius-lg);
+			box-shadow: var(--shadow-md);
+			text-align: center;
+			transition: transform 0.3s ease;
+		}
+
+		.feature-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.feature-icon {
+			font-size: 3rem;
+			margin-bottom: var(--spacing-md);
+			display: inline-block;
+		}
+
+		.footer {
+			background: #333;
+			color: white;
+			text-align: center;
+			padding: var(--spacing-xl) 0;
+			margin-top: var(--spacing-xxl);
+		}
+
+		.footer p {
+			color: #aaa;
+		}
+
+		/* Mockup phone container */
+		.phone-mockup-container {
+			position: relative;
+			width: 300px;
+			height: 600px;
+			background: #f0f0f0;
+			border-radius: 40px;
+			border: 12px solid #333;
+			margin: 0 auto;
+			overflow: hidden;
+			box-shadow: var(--shadow-hover);
+		}
+
+		.phone-screen {
+			width: 100%;
+			height: 100%;
+			background: white;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<nav class="navbar">
+		<div class="container navbar-container">
+			<div class="logo">
+				🩺 Vax<span>Buddy</span>
+			</div>
+			<div class="nav-links">
+				<a href="front.html" class="active">Home</a>
+				<a href="dashboard.html">Dashboard</a>
+				<a href="records.html">Records</a>
+				<a href="index.html" class="btn btn-secondary btn-sm" style="color: white;">Login / Start</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="container">
+			<div class="hero-content">
+				<div class="hero-text">
+					<h1>Stay on Track with Your Family's Health</h1>
+					<p style="font-size: 1.1rem; color: #555;">
+						Vax Buddy is your intelligent immunization companion. Never miss a dose with our smart reminders
+						and easy-to-use tracking system. Secure, private, and designed for parents.
+					</p>
+					<div class="d-flex gap-4" style="margin-top: 2rem;">
+						<a href="index.html" class="btn btn-primary">Get Started Now</a>
+						<button onclick="notify('whatsapp')" class="btn btn-outline">Test Reminders</button>
+					</div>
+
+					<div class="card mt-4" style="border-left: 5px solid var(--secondary-color);">
+						<h3>Vaccine Status Preview</h3>
+						<ul style="list-style: none; padding: 0;">
+							<li style="margin-bottom: 8px;">🔴 <strong>Overdue:</strong> MMR (Dose 1)</li>
+							<li style="margin-bottom: 8px;">🟡 <strong>Due Soon:</strong> Hepatitis B (Dose 3)</li>
+							<li>🟢 <strong>Completed:</strong> Polio (Dose 1)</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="hero-image">
+					<div class="phone-mockup-container">
+						<div class="phone-screen">
+							<div style="font-size: 4rem; margin-bottom: 20px;">👶</div>
+							<h3 style="color: var(--primary-color);">Vax Buddy</h3>
+							<p>Your personal assistant for tracking vaccinations.</p>
+							<a href="index.html" class="btn btn-secondary btn-sm"
+								style="margin-top: 20px; width: 80%;">Open App</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Features Section -->
+	<section class="section" style="background: #fff;">
+		<div class="container">
+			<h2 class="text-center">Why Choose Vax Buddy?</h2>
+			<p class="text-center mx-auto max-w-600">We make it simple to manage health records for your entire family.
+			</p>
+
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon">🔔</div>
+					<h3>Smart Reminders</h3>
+					<p>Receive timely notifications via SMS, WhatsApp, or Email so you never forget a scheduled vaccine.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">👶</div>
+					<h3>Multi-Child Support</h3>
+					<p>Easily manage profiles and vaccination schedules for all your children in one unified dashboard.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🔒</div>
+					<h3>Secure Records</h3>
+					<p>Keep a digital history of all immunizations that you can access anytime, anywhere.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<p>&copy; 2025 Vax Buddy. All rights reserved.</p>
+			<p style="font-size: 0.9rem;">Your trusted partner for family immunization tracking.</p>
+		</div>
+	</footer>
+
+	<script>
+		function notify(type) {
+			const msg = `Sending sample ${type} reminder... (Simulation)`;
+			alert(msg);
+		}
+	</script>
+</body>
+
+</html>
